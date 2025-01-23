@@ -37,7 +37,7 @@ output * bg /home/netmoss/Pictures/Wallpapers/Snow-Capped Mountain.jpg fill
 #
 # Laptop
 #
-output eDP-1 adaptive_sync on resolution 1920x1200@60Hz position 1920,0
+# output eDP-1 adaptive_sync on resolution 1920x1200@60Hz position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 #
@@ -405,5 +405,6 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 ## Automounting volumes
-exec udiskie -ANt &
+# exec udiskie -ANt &
+exec udiskie -an &
 
