@@ -1,5 +1,5 @@
 alacritty
-neovim
+helix
 firefox
 mpv
 thunar
