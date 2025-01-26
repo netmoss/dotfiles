@@ -45,3 +45,8 @@ xarchiver
 tesseract-data-eng
 zathura
 zathura-pdf-mupdf
+clang
+python-lsp-server
+rust-analyzer
+marksman
+zls
