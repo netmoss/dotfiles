@@ -51,3 +51,4 @@ rust-analyzer
 marksman
 zls
 glow
+ncspot
