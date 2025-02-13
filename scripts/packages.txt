@@ -52,3 +52,4 @@ marksman
 zls
 glow
 ncspot
+bleachbit
