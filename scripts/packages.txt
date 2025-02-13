@@ -47,7 +47,7 @@ zathura
 zathura-pdf-mupdf
 clang
 python-lsp-server
-rust-analyzer
+rustup
 marksman
 zls
 glow
