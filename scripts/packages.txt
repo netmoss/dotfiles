@@ -1,6 +1,6 @@
 alacritty
 helix
-firefox
+ungoogled-chromium-bin
 mpv
 thunar
 gvfs
@@ -19,6 +19,8 @@ gtklock
 wlsunset
 imv
 waybar
+networkmanager
+network-manager-applet
 rofi
 dunst
 kanshi
