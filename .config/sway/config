@@ -99,7 +99,7 @@ input "type:keyboard" {
     bindsym $mod+d exec $menu
 	
     # Start browser
-    bindsym $mod+w exec firefox 
+    bindsym $mod+w exec chromium 
 
     # Start file explorer
     bindsym $mod+n exec thunar
