@@ -1,0 +1,175 @@
+* {
+    font-family: 'JetBrainsMono Nerd Font', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 12px;
+}
+
+
+window#waybar {
+    background-color: rgba(13, 17, 23, 1);
+    border-bottom: 3px solid rgba(13, 17, 23, 1);
+    color: #ecf2f8;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #ecf2f8;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ecf2f8;
+}
+
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: #21262d
+}
+
+#network:hover {
+    background-color: #21262d
+}
+
+#idle_inhibitor:hover {
+    background-color: #21262d
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ecf2f8;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ecf2f8;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ecf2f8;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: #ecf2f8;
+    background-color: rgba(13, 17, 23, 0);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#battery {
+    background-color: #ecf2f8;
+    background-color: rgba(13, 17, 23, 0);
+}
+
+#battery.charging, #battery.plugged {
+    color: #ecf2f8;
+    background-color: rgba(13, 17, 23, 0);
+}
+
+@keyframes blink {
+    to {
+        background-color: #ecf2f8;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ecf2f8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/**
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ecf2f8;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ecf2f8;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+**/
+label:focus {
+    background-color: #000000;
+}
