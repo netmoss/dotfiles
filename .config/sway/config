@@ -1,6 +1,6 @@
 ## Startup
 # Blue light
-exec_always wlsunset -l
+exec_always wlsunset -t 3500 -l -L
 #
 ### Variables
 #
