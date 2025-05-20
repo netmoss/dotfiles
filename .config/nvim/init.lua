@@ -299,7 +299,7 @@ require("lspconfig").rust_analyzer.setup({})
 require("lspconfig").clangd.setup({})
 require("lspconfig").arduino_language_server.setup({})
 
--- binds
+---- binds
 -- neotree
 vim.keymap.set("n", "\\", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
 
@@ -318,12 +318,6 @@ vim.keymap.set("t", "<leader>q", [[<C-\><C-n>]], { noremap = true, silent = true
 vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
 vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Write and quit" })
-
--- nav
-vim.keymap.set("n", "<leader>j", ':execute "normal! " . input("Jump down by: ") . "j"<CR>',
-    { noremap = true, silent = true, desc = "Jump down by" })
-vim.keymap.set("n", "<leader>k", ':execute "normal! " . input("Jump up by: ") . "k"<CR>',
-    { noremap = true, silent = true, desc = "Jump up by" })
 
 -- windows
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical split" })
