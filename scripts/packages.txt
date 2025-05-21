@@ -26,6 +26,7 @@ rust-analyzer
 zls
 clang
 arduino-language-server
+lua-language-server
 npm
 thunar
 gvfs
