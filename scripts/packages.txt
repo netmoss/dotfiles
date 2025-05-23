@@ -56,3 +56,4 @@ ripgrep
 lazygit
 fd
 luarocks
+wireguard-tools
