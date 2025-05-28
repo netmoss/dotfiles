@@ -258,7 +258,6 @@ local makeprg_map = {
     arduino =
     "arduino-cli compile --fqbn arduino:avr:uno % && arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno %",
     java = "javac % && java %:r",
-    sh = "sh %",
 }
 
 -- function to set makeprg
@@ -299,23 +298,25 @@ require("lspconfig").arduino_language_server.setup({})
 
 ---- binds
 -- neotree
-vim.keymap.set("n", "\\", ":Neotree toggle<CR>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "\\", ":Neotree toggle<CR>", { noremap = true, silent = true, desc = "Toggle Neotree" })
 
 -- fuzzy
-vim.keymap.set("n", "<leader>ff", ":Files<CR>", { desc = "Fuzzy find files" })
-vim.keymap.set("n", "<leader>fg", ":Rg<CR>", { desc = "Fuzzy live grep" })
-vim.keymap.set("n", "<leader>fb", ":Buffers<CR>", { desc = "Fuzzy buffers" })
-vim.keymap.set("n", "<leader>fh", ":Helptags<CR>", { desc = "Fuzzy help tags" })
+vim.keymap.set("n", "<leader>ff", ":Files<CR>", { noremap = true, desc = "Fuzzy find files" })
+vim.keymap.set("n", "<leader>fg", ":Rg<CR>", { noremap = true, desc = "Fuzzy live grep" })
+vim.keymap.set("n", "<leader>fb", ":Buffers<CR>", { noremap = true, desc = "Fuzzy buffers" })
+vim.keymap.set("n", "<leader>fh", ":Helptags<CR>", { noremap = true, desc = "Fuzzy help tags" })
 
 -- dev
 vim.keymap.set("n", "<leader>d", "<Cmd>lua vim.lsp.buf.hover()<CR>",
     { noremap = true, silent = true, desc = "Display documentation" })
-vim.keymap.set("n", "<leader>t", ":Trouble<CR>", { desc = "Toggle Trouble diagnostics" })
+vim.keymap.set("n", "<leader>t", ":Trouble<CR>", { noremap = true, silent = true, desc = "Toggle Trouble diagnostics" })
 vim.keymap.set("n", "<leader>m", ":TermMake<CR>", { noremap = true, silent = true, desc = "Compile and run" })
 vim.keymap.set("t", "<leader>q", [[<C-\><C-n>]], { noremap = true, silent = true, desc = "Quit terminal buffer" })
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-vim.keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Write and quit" })
+vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, desc = "Write" })
+vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, desc = "Quit" })
+vim.keymap.set("n", "<leader>wq", ":wq<CR>", { noremap = true, desc = "Write and quit" })
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { noremap = true, silent = true, desc = "Next buffer" })
+vim.keymap.set('n', '<leader>bb', ':bprevious<CR>', { noremap = true, silent = true, desc = "Previous buffer" })
 
 -- windows
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical split" })
