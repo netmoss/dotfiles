@@ -57,7 +57,7 @@ bindgesture swipe:left workspace next
 input "type:pointer" {
     natural_scroll false
     accel_profile "flat"
-    pointer_accel 0
+    pointer_accel 0.25
    }
 #
 # Keyboard configuration
