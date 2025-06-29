@@ -57,3 +57,5 @@ lazygit
 fd
 luarocks
 wireguard-tools
+pandoc
+tectonic
