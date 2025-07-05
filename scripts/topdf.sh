@@ -1,29 +1,30 @@
 #!/bin/bash
 
+set -e
+
 if [ -z "$1" ]; then
-  echo "Usage: to-pdf <file.md>"
+  printf "Usage: to-pdf <file.md>\n"
   exit 1
 fi
 
 INPUT="$1"
 
 if [ ! -f "$INPUT" ]; then
-  echo "Error: File '$INPUT' not found."
+  printf "Error: File '%s' not found.\n" "$INPUT"
   exit 1
 fi
 
-if [[ "$INPUT" != *.md ]]; then
-  echo "Error: Input must be a Markdown (.md) file."
+if [[ ! "$INPUT" =~ \.md$ ]]; then
+  printf "Error: Input must be a Markdown (.md) file.\n"
   exit 1
 fi
 
 OUTPUT="${INPUT%.md}.pdf"
 
-pandoc "$INPUT" -o "$OUTPUT" --pdf-engine=tectonic
-
-if [ $? -eq 0 ]; then
-  echo "Successfully created PDF: $OUTPUT"
+if pandoc "$INPUT" -f markdown+lists_without_preceding_blankline -o "$OUTPUT" --pdf-engine=tectonic; then
+  printf "Successfully created PDF: %s\n" "$OUTPUT"
 else
-  echo "Failed to generate PDF."
+  printf "Failed to generate PDF.\n"
+  exit 1
 fi
 
