@@ -60,3 +60,4 @@ wireguard-tools
 pandoc
 tectonic
 tldr
+dnsmasq
