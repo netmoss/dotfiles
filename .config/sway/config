@@ -1,55 +1,43 @@
-## Startup
+### Startup
 # Blue light
 exec_always wlsunset -t 3500 -l -L
-#
+
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+# Preferred terminal emulator
 set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# Recommends: rofi-wayland
+# Preferred application launcher
 set $rofi_cmd rofi \
     -terminal 
-# Shows a combined list of the applications with desktop files and
-# executables from PATH.
+# Shows combined list of applications with desktop files and executables from PATH.
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
-#
-### Output configuration
-#
-# Wallpaper
+
+### Wallpaper
 output * bg /home/netmoss/Pictures/Wallpapers/snow-capped-mountain.jpg fill
-#
+
 ### Display configuration:
 # Laptop
 output eDP-1 resolution 1920x1200@60Hz position 0,0 adaptive_sync on
 # Desktop
 #output DP-1 resolution 3440x1440@144Hz position 0,0 adaptive_sync on
 #
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-#
+# Get outputs by via swaymsg -t get_outputs
+
 ### Input configuration
 #
-# Touchpad configuration
-#
-# Mouse configuration
-#
+# Trackpoint configuration
 input "type:pointer" {
     natural_scroll false
     scroll_button_lock "enabled"
     accel_profile "flat"
     pointer_accel 1
    }
-#
-#
+# Trackpad configuration
 input "type:touchpad" {
     dwt enabled
     tap enabled
@@ -69,8 +57,9 @@ input "type:keyboard" {
     repeat_rate 40
    }
 #
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-### Key bindings
+# Get inputs via swaymsg -t get_inputs
+
+### Key binds
 #
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -90,14 +79,13 @@ input "type:keyboard" {
     # Lock screen
     bindsym $mod+Escape exec gtklock
 
-    # Drag floating windows by holding down $mod and left mouse button.
+    # Drag floating windows with $mod + left mouse button.
     # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
+    # Also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right mouse button for dragging.
     floating_modifier $mod normal
 
-    # Reload the configuration file
+    # Reload configuration file
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
@@ -105,23 +93,23 @@ input "type:keyboard" {
 #
 # Moving around:
 #
-    # Move your focus around
+    # Move focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
+
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
+    # Use Shift to move the focused window
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
+
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
@@ -140,7 +128,8 @@ input "type:keyboard" {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
+
+    # Move focused window to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
     bindsym $mod+Shift+3 move container to workspace number 3
@@ -151,59 +140,47 @@ input "type:keyboard" {
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
+    # Use $mod + b or $mod + v to split current focus horizontally or vertically 
     bindsym $mod+b splith
     bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    #bindsym $mod+s layout stacking
+    # Switch current container layout style
+    bindsym $mod+s layout stacking
     bindsym $mod+t layout tabbed
     bindsym $mod+e layout toggle split
 
-    # Make the current focus fullscreen
+    # Fullscreen
     bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
+    # Toggle focus between ttiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
-    # Swap focus between the tiling area and the floating area
+    # Swap focus between tiling area and floating area
     bindsym $mod+space focus mode_toggle
 
-    # Move focus to the parent container
+    # Move focus to parent container
     bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
+    # Move currently focused window to scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
+    # Show scratchpad
     bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
+    # Resize via direction keys
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
@@ -232,7 +209,7 @@ bindsym $mod+r mode "resize"
 # Fonts
   font pango:JetBrainsMono Nerd Font 10
 
-# apply mark for Xwayland and wayland native browser windows
+# Apply mark for Xwayland and wayland native browser windows
 for_window [class="Chromium-browser"] mark Browser
 for_window [class="Brave-browser"] mark Browser
 for_window [class="firefox"]  mark Browser
@@ -243,23 +220,22 @@ for_window [app_id="brave-browser"] mark Browser
 for_window [app_id="firefox"] mark Browser
 for_window [app_id="librewolf"] mark Browser
 
-# inhibit scrensaver for fullscreen browser windows
+# Inhibit scrensaver for fullscreen browser windows
 for_window [con_mark="Browser"] {
     inhibit_idle fullscreen
 }
 
-# firefox wayland screensharing indicator
+# Firefox wayland screensharing indicator
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] {
     floating enable
 }
 
-# librewolf wayland screensharing indicator
+# Librewolf wayland screensharing indicator
 for_window [app_id="librewolf" title="Librewolf — Sharing Indicator"] {
     floating enable
 }
 
-# Display PulseAudio volume control application (both GTK and Qt varieties)
-# as a floating window.
+# Display PulseAudio volume control application (both GTK and Qt varieties) as a floating window.
 
 for_window [app_id="pavucontrol"] {
     floating enable
@@ -274,11 +250,9 @@ for_window [app_id="lxqt-policykit-agent"] {
     floating enable
     move position center
 }
-# Key bindings for brightness control using `brightnessctl`.
-# Displays a notification with the current value if /usr/bin/notify-send is available
-# Requires:     brightnessctl >= 0.5.1-11
-# Recommends:   libnotify
 
+# Key bindings for brightness control using `brightnessctl` and `libnotify`.
+#
 set $brightness_notification_cmd  command -v notify-send >/dev/null && \
         VALUE=$(brightnessctl --percentage get) && \
         notify-send -e -h string:x-canonical-private-synchronous:brightness \
@@ -288,11 +262,10 @@ bindsym XF86MonBrightnessDown exec \
         'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
 bindsym XF86MonBrightnessUp exec \
         'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
-# Key bindings for media player control via MPRIS D-Bus interface
-#
-# Requires:     playerctl
 
-# Allow Play and Stop bindings even if the screen is locked
+# Key bindings for media player control via MPRIS D-Bus interface and `playerctl`.
+#
+# Allow play and stop bindings even if screen is locked
 bindsym --locked {
     XF86AudioPlay       exec playerctl play-pause
     XF86AudioStop       exec playerctl stop
@@ -305,9 +278,7 @@ bindsym {
     XF86AudioPrev       exec playerctl previous
     XF86AudioRewind     exec playerctl position -10
 }
-# Key bindings for taking screenshots
-# Requires:     grimshot
-
+# Key bindings for taking screenshots via grimshot.
 bindsym {
     # Capture the currently active output
     Print       exec grimshot save output $HOME/Pictures/Screenshots/$(date +%y-%m-%d_%H-%M-%S.png) && wl-copy < $(ls -t $HOME/Pictures/Screenshots/*.png | head -n 1)
@@ -316,6 +287,7 @@ bindsym {
     # Select and capture a custom rectangular area
     Ctrl+Print  exec grimshot save area $HOME/Pictures/Screenshots/$(date +%y-%m-%d_%H-%M-%S.png) && wl-copy < $(ls -t $HOME/Pictures/Screenshots/*.png | head -n 1)
 }
+# Requires ~/Pictures/Screenshots/ directory for clipboard.
 
 # Key bindings to control pipewire or pulseaudio volume with pactl.
 # Displays a notification with the current state if /usr/bin/notify-send is available
@@ -341,17 +313,12 @@ mode "passthrough" {
 }
 bindsym $mod+Pause mode "passthrough"
 
-# Status Bar: waybar
-# Requires: waybar
-
+## Status bar (waybar)
 bar {
     swaybar_command waybar
 }
-# Idle and lock configuration
-# Requires: swayidle
-# Requires: gtklock
-# Requires: /usr/bin/pkill, /usr/bin/pgrep
 
+# Idle and lock configuration via swayidle and gtklock
 exec LT="$lock_timeout" ST="$screen_timeout" LT=${LT:-300} ST=${ST:-60} && \
     swayidle -w \
         timeout $LT 'gtklock -d' \
@@ -364,10 +331,10 @@ exec LT="$lock_timeout" ST="$screen_timeout" LT=${LT:-300} ST=${ST:-60} && \
         unlock 'pkill -xu "$USER" -SIGUSR1 gtklock'
 
 ### Environmental variables and misc.
-## Screensharing
+# Screensharing
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-## Automounting volumes
+# Automounting volumes
 # exec udiskie -ANt &
 exec udiskie -an &
