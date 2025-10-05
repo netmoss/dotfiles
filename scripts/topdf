@@ -21,7 +21,14 @@ fi
 
 OUTPUT="${INPUT%.md}.pdf"
 
-if pandoc "$INPUT" -f markdown+lists_without_preceding_blankline -o "$OUTPUT" --pdf-engine=tectonic; then
+if pandoc "$INPUT" \
+  -f markdown+lists_without_preceding_blankline \
+  -o "$OUTPUT" \
+  --pdf-engine=xelatex \
+  --toc \
+  --toc-depth=3 \
+  -V geometry:a4paper,margin=2.5cm \
+  -V floatplacement=H; then
   printf "Successfully created PDF: %s\n" "$OUTPUT"
 else
   printf "Failed to generate PDF.\n"
